@@ -9,14 +9,21 @@ string[] names = {
 };
 
 
-// Print all array elements, *perLine* elements per one line
+// Print all array elements, *perLine* elements per one
 // After all elements except last one should be ", " - also on the end of lines.
 // After last element should be ".".
 void PrintGroups(string[] t, int perLine)
 {
-
-    // Write required code.
-
+    for (int i = 0; i < t.Length; i++)
+    {
+        if (i != 0 && i % perLine == 0)
+        {
+            Console.WriteLine();
+        }
+        Console.Write(t[i]); 
+        if (i == t.Length - 1) Console.Write(".");
+        else Console.Write(", ");
+    }
 }
 
 
@@ -27,9 +34,16 @@ void PrintGroups(string[] t, int perLine)
 
 void PrintColumns(string[] t, int perLine, int width)
 {
-
-    // Write required code.
-
+    for (int i = 0; i < t.Length; i++)
+    {
+        string word = t[i];
+        if (word.Length+1 > width) word = word.Substring(0, width);
+        if (word.Length+1 <= width) word = word.PadRight(width, ' ');
+        if (i % perLine == 0 && i != 0) Console.WriteLine();
+        
+        Console.Write(word);
+        if (i % perLine != perLine-1) Console.Write("| ");
+    }
 }
 
 
